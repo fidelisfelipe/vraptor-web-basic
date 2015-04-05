@@ -121,9 +121,9 @@ public class DefaultGenericDao<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<T> loadPage(int limitForPage, int pageCurrent) {
-		int initial = pageCurrent * limitForPage;
+	public List<T> loadPage(int limitPage, int pageCurrent) {
+		int initial = pageCurrent * limitPage;
 		return this.session.createCriteria(this.persistentClass)
-				.setFirstResult(initial).setMaxResults(limitForPage).list();
+				.setFirstResult(initial).setMaxResults(limitPage).list();
 	}
 }

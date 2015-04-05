@@ -1,5 +1,8 @@
 package br.com.caelum.vraptor.sysweb.dao.impl;
 
+import static org.junit.Assert.*;
+
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -7,13 +10,14 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import static org.junit.Assert.*;
 import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
 
 /**
@@ -86,7 +90,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 		daoTest.containsId(id);
 	}
 	@Test
-	public void testContainsId(){
+	public void testContainsIdLongTrue(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -99,7 +103,76 @@ public class DefaultGenericDaoTest extends GenericTest {
 		when(criteria.add(any(se.getClass()))).thenReturn(criteria);
 		when(criteria.uniqueResult()).thenReturn(new Object());
 		//then
-		daoTest.containsId(test.getId());
+		boolean isContains = daoTest.containsId(test.getId());
+		
+		assertTrue("deve conter algo",isContains);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).add(any(se.getClass()));
+		verify(criteria).uniqueResult();
+	}
+	
+	@Test
+	public void testContainsIdLongFalse(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		EntidadeTest test = new EntidadeTest();
+		test.setId(1l);
+		//deve ser passado para criteria.add
+		SimpleExpression se = Restrictions.eq("id", test.getId());
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.add(any(se.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(null);
+		//then
+		boolean isContains = daoTest.containsId(test.getId());
+		
+		assertFalse("deve conter algo",isContains);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).add(any(se.getClass()));
+		verify(criteria).uniqueResult();
+	}
+	
+	@Test
+	public void testContainsIdIntegerTrue(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		EntidadeTest test = new EntidadeTest();
+		test.setId(1l);
+		//deve ser passado para criteria.add
+		SimpleExpression se = Restrictions.eq("id", test.getId());
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.add(any(se.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(new Object());
+		//then
+		boolean isContains = daoTest.containsId(test.getId().intValue());
+		
+		assertTrue("deve conter algo", isContains);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).add(any(se.getClass()));
+		verify(criteria).uniqueResult();
+	}
+	public void testContainsIdIntegerFalse(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		EntidadeTest test = new EntidadeTest();
+		test.setId(1l);
+		//deve ser passado para criteria.add
+		SimpleExpression se = Restrictions.eq("id", test.getId());
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.add(any(se.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(null);
+		//then
+		boolean isContains = daoTest.containsId(test.getId().intValue());
+		
+		assertFalse("não deve conter algo",isContains);
 		
 		verify(session).createCriteria(daoTest.getPersistentClass());
 		verify(criteria).add(any(se.getClass()));
@@ -112,7 +185,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 		daoTest.containsName(nome);
 	}
 	@Test
-	public void testContainsName(){
+	public void testContainsNameTrue(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -126,7 +199,33 @@ public class DefaultGenericDaoTest extends GenericTest {
 		when(criteria.uniqueResult()).thenReturn(new Object());
 		
 		//then
-		daoTest.containsName(test.getName());
+		boolean isContains = daoTest.containsName(test.getName());
+		
+		assertTrue("deve conter algo",isContains);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).add(any(se.getClass()));
+		verify(criteria).uniqueResult();
+	}
+	
+	@Test
+	public void testContainsNameFalse(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		EntidadeTest test = new EntidadeTest();
+		test.setName("name");
+		//deve ser passado para criteria.add
+		SimpleExpression se = Restrictions.eq("name", test.getName());
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.add(any(se.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(null);
+		
+		//then
+		boolean isContains = daoTest.containsName(test.getName());
+		
+		assertFalse("não deve conter algo",isContains);
 		
 		verify(session).createCriteria(daoTest.getPersistentClass());
 		verify(criteria).add(any(se.getClass()));
@@ -213,7 +312,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void persist(){
+	public void testPersist(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -228,7 +327,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void update(){
+	public void testUpdate(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -243,7 +342,22 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void delete(){
+	public void testSaveOrUpdate(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		EntidadeTest test = new EntidadeTest();
+		
+		//when
+		doNothing().when(session).saveOrUpdate(test);
+		
+		//then
+		daoTest.saveOrUpdate(test);
+		
+		verify(session).saveOrUpdate(test);
+	}
+	
+	@Test
+	public void testDelete(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -258,7 +372,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void refresh(){
+	public void testRefresh(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -273,7 +387,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void listAll(){
+	public void testListAll(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		//deve ser passado para crietria.addOrder
@@ -319,7 +433,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 	}
 	
 	@Test
-	public void loadLong(){
+	public void testLoadLong(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -336,7 +450,7 @@ public class DefaultGenericDaoTest extends GenericTest {
 		verify(session).get(daoTest.getPersistentClass(), test.getId());
 	}
 	@Test
-	public void loadInteger(){
+	public void testLoadInteger(){
 		//given
 		TestDefaultDao daoTest = new TestDefaultDao(session);
 		EntidadeTest test = new EntidadeTest();
@@ -352,8 +466,50 @@ public class DefaultGenericDaoTest extends GenericTest {
 		
 		verify(session).get(daoTest.getPersistentClass(), test.getId().longValue());
 	}
+	@Test
+	public void testLoadPage(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		int pageCurrent = 1;
+		int limitPage = 10;
+		int initialPage = pageCurrent * limitPage;
+		List list = Collections.EMPTY_LIST;
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.setFirstResult(initialPage)).thenReturn(criteria);
+		when(criteria.setMaxResults(limitPage)).thenReturn(criteria);
+		when(criteria.list()).thenReturn(list);
+		
+		//then
+		List listResult = daoTest.loadPage(limitPage, pageCurrent);
+		
+		assertTrue("deve retornar algo", listResult != null);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).setFirstResult(initialPage);
+		verify(criteria).setMaxResults(limitPage);
+	}
 	
-	//Falta rowCount e LoadPage test
-	
-	
+	@Test
+	public void testRowPage(){
+		//given
+		TestDefaultDao daoTest = new TestDefaultDao(session);
+		//deve ser passado para criteria.setProjection
+		Projection projection = Projections.rowCount();
+
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.setProjection(any(projection.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(Integer.valueOf(1));
+		
+		//then
+		int count = daoTest.rowCount();
+		
+		assertTrue("deve retornar algo",count == 1);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria).setProjection(any(projection.getClass()));
+		verify(criteria).uniqueResult();
+	}
 }

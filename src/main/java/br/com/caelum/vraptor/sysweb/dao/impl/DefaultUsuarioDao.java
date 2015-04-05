@@ -1,7 +1,5 @@
 package br.com.caelum.vraptor.sysweb.dao.impl;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -23,40 +21,6 @@ public class DefaultUsuarioDao extends DefaultGenericDao<Usuario> implements
 	@Inject
 	public DefaultUsuarioDao(Session session) {
 		super(session);
-	}
-
-	public Usuario findForName(String name) {
-		return (Usuario) find(name);
-	}
-
-	public List<Usuario> listAll() {
-		return super.listAll();
-	}
-
-	public boolean containsUsuarioWithLogin(String nome) {
-		Long count = (Long) getSession()
-				.createQuery(
-						"select count(u) from Usuario u where u.nome = :nome")
-				.setParameter("nome", nome).uniqueResult();
-		return count.longValue() > 0L;
-	}
-
-	public void add(Usuario usuario) {
-		persist(usuario);
-	}
-
-	public void refresh(Usuario usuario) {
-		super.refresh(usuario);
-	}
-
-	public Usuario load(Usuario usuario) {
-		return (Usuario) load(usuario.getId());
-	}
-
-	public void remove(Usuario usuario) {
-		Usuario object = load(usuario);
-		if (object != null)
-			delete(object);
 	}
 
 	/**
