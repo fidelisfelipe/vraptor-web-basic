@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.sysweb.dao.UsuarioDao;
 import br.com.caelum.vraptor.sysweb.model.Usuario;
+import br.com.caelum.vraptor.sysweb.util.PreconditionUtil;
 
 /**
  * @author fidelis.guimaraes
@@ -30,12 +31,10 @@ public class DefaultUsuarioDao extends DefaultGenericDao<Usuario> implements
 	 * @return
 	 */
 	public Usuario existe(Usuario usuario) {
-		if (usuario != null)
-			return (Usuario) getSession().createCriteria(Usuario.class)
-					.add(Restrictions.eq("email", usuario.getEmail()))
-					.add(Restrictions.eq("senha", usuario.getSenha()))
-					.add(Restrictions.eq("ativo", true)).uniqueResult();
-
-		return usuario;
+		PreconditionUtil.isNotNullDoThrowsIllegalArgumentException(usuario);
+		return (Usuario) getSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("email", usuario.getEmail()))
+				.add(Restrictions.eq("senha", usuario.getSenha()))
+				.add(Restrictions.eq("ativo", true)).uniqueResult();
 	}
 }

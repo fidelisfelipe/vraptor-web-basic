@@ -1,4 +1,4 @@
-package br.com.caelum.vraptor.sysweb.util.xml.persistence;
+package br.com.caelum.vraptor.sysweb.util;
 
 import java.util.List;
 

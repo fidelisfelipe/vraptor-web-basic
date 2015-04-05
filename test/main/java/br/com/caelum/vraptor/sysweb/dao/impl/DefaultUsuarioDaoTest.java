@@ -31,6 +31,34 @@ public class DefaultUsuarioDaoTest extends GenericTest {
 	}
 
 	@Test
+	public void testExistFalse(){
+		//given
+		DefaultUsuarioDao daoTest = new DefaultUsuarioDao(session);
+		Usuario usuario = new Usuario();
+		usuario.setNome("nome");
+		//deve ser passado para criteria.add
+		SimpleExpression seEmail = Restrictions.eq("email", usuario.getEmail());
+		SimpleExpression seSenha = Restrictions.eq("senha", usuario.getSenha());
+		SimpleExpression seAtivo = Restrictions.eq("ativo", Boolean.TRUE);
+		
+		//when
+		when(session.createCriteria(daoTest.getPersistentClass())).thenReturn(criteria);
+		when(criteria.add(any(seEmail.getClass()))).thenReturn(criteria);
+		when(criteria.add(any(seSenha.getClass()))).thenReturn(criteria);
+		when(criteria.add(any(seAtivo.getClass()))).thenReturn(criteria);
+		when(criteria.uniqueResult()).thenReturn(null);
+		
+		//then
+		Usuario exists = daoTest.existe(usuario);
+		
+		assertNull("deve conter algo",exists);
+		
+		verify(session).createCriteria(daoTest.getPersistentClass());
+		verify(criteria, times(3)).add(any(seEmail.getClass()));
+		verify(criteria).uniqueResult();
+		
+	}
+	@Test
 	public void testExistTrue(){
 		//given
 		DefaultUsuarioDao daoTest = new DefaultUsuarioDao(session);
@@ -49,16 +77,20 @@ public class DefaultUsuarioDaoTest extends GenericTest {
 		when(criteria.uniqueResult()).thenReturn(new Usuario());
 		
 		//then
-		boolean isExists = daoTest.containsName(usuario.getNome());
+		Usuario exists = daoTest.existe(usuario);
 		
-		assertTrue("deve conter algo",isExists);
+		assertNotNull("deve conter algo",exists);
 		
 		verify(session).createCriteria(daoTest.getPersistentClass());
-		verify(criteria).add(any(seEmail.getClass()));
-		verify(criteria).add(any(seSenha.getClass()));
-		verify(criteria).add(any(seAtivo.getClass()));
+		verify(criteria, times(3)).add(any(seEmail.getClass()));
 		verify(criteria).uniqueResult();
 		
+	}
+	//then
+	@Test(expected = IllegalArgumentException.class)
+	public void testExistFailIllegalArgumentException(){
+		//when
+		new DefaultUsuarioDao(session).existe(null);
 	}
 	
 }
