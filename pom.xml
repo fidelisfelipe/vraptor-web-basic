@@ -35,9 +35,9 @@
 	</organization>
 
 	<scm>
-		<url>http://github.com/fidelisfelipe/vraptor-bootstrap-ajax</url>
-		<connection>scm:git:git://github.com/fidelisfelipe/vraptor-bootstrap-ajax</connection>
-		<developerConnection>scm:git:git@github.com:fidelisfelipe/vraptor-bootstrap-ajax.git</developerConnection>
+		<url>http://github.com/fidelisfelipe/vraptor-web-basic</url>
+		<connection>scm:git:git://github.com/fidelisfelipe/vraptor-web-basic</connection>
+		<developerConnection>scm:git:git@github.com:fidelisfelipe/vraptor-web-basic.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -135,11 +135,19 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- BD -->
 
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
+	
 	</dependencies>
 
 	<build>
-		<finalName>vraptor-blank-project</finalName>
+		<finalName>vraptor-web-basic</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
