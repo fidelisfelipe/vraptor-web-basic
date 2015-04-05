@@ -7,10 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
-import br.com.caelum.vraptor.sysweb.common.Classe;
-import br.com.caelum.vraptor.sysweb.common.Persistence;
-import br.com.caelum.vraptor.sysweb.common.PersistenceUnit;
 import br.com.caelum.vraptor.sysweb.util.XmlUtil;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.Classe;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.Persistence;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.PersistenceUnit;
 /**
  * @author fidelis.guimaraeso
  *

@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-import br.com.caelum.vraptor.sysweb.common.Classe;
-import br.com.caelum.vraptor.sysweb.common.Persistence;
-import br.com.caelum.vraptor.sysweb.common.PersistenceUnit;
-import br.com.caelum.vraptor.sysweb.common.Property;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.Classe;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.Persistence;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.PersistenceUnit;
+import br.com.caelum.vraptor.sysweb.util.xml.persistence.Property;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;

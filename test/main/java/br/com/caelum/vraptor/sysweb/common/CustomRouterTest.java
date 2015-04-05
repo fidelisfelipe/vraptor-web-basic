@@ -1,19 +1,13 @@
 package br.com.caelum.vraptor.sysweb.common;
 
-import java.lang.annotation.Annotation;
+import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.inject.Inject;
-import javax.validation.constraints.AssertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Spy;
-import org.mockito.asm.MethodAdapter;
-import org.mockito.stubbing.Answer;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
@@ -21,13 +15,9 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.controller.BeanClass;
-import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.controller.DefaultBeanClass;
 import br.com.caelum.vraptor.controller.DefaultControllerMethod;
-import br.com.caelum.vraptor.core.ReflectionProvider;
-import br.com.caelum.vraptor.http.route.Router;
 import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
-import static org.junit.Assert.*;
 
 /**
  * @author fidelis.guimaraes

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.caelum</groupId>
-	<artifactId>vraptor-blank-project</artifactId>
+	<artifactId>vraptor-web-basic</artifactId>
 	<version>4.2.0-RC2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -12,6 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<weld.version>2.1.2.Final</weld.version>
+		<vraptor.version>4.2.0-RC1</vraptor.version>
 	</properties>
 
 	<developers>
@@ -53,7 +54,7 @@
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>${project.version}</version>
+			<version>${vraptor.version}</version>
 		</dependency>
 
 		<dependency>
