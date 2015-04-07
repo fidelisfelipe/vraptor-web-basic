@@ -15,12 +15,13 @@ import br.com.caelum.vraptor.sysweb.util.PreconditionUtil;
  */
 public class DefaultUsuarioDao extends DefaultGenericDao<Usuario> implements
 		UsuarioDao {
-	protected DefaultUsuarioDao() {
+	
+	public DefaultUsuarioDao() {
 		this(null);
 	}
-
+	
 	@Inject
-	public DefaultUsuarioDao(Session session) {
+	protected DefaultUsuarioDao(Session session) {
 		super(session);
 	}
 
