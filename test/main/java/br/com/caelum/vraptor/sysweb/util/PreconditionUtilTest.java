@@ -1,15 +1,15 @@
 package br.com.caelum.vraptor.sysweb.util;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Collections;
 
-import org.jboss.weld.environment.servlet.util.Reflections;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
+import br.com.caelum.vraptor.sysweb.GenericTest;
 
 /**
  * @author fidelis.guimaraes
@@ -19,7 +19,6 @@ public class PreconditionUtilTest extends GenericTest{
 
 	@Before
 	public void setUp(){
-		super.setUp();
 	}
 	
 	@Test

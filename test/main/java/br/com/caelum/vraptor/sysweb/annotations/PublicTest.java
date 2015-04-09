@@ -1,11 +1,11 @@
 package br.com.caelum.vraptor.sysweb.annotations;
 
+import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 /**
  * Anotação que permite acesso sem login aos métodos
  * @author fidelis.guimaraes

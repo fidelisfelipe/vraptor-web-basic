@@ -9,7 +9,6 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -17,7 +16,7 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.controller.BeanClass;
 import br.com.caelum.vraptor.controller.DefaultBeanClass;
 import br.com.caelum.vraptor.controller.DefaultControllerMethod;
-import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
+import br.com.caelum.vraptor.sysweb.GenericTest;
 
 /**
  * @author fidelis.guimaraes
@@ -27,7 +26,6 @@ public class CustomRouterTest extends GenericTest {
 
 	private CustomRouterMock customRouter;
 
-	@Controller
 	class ControllerTest {
 		@Get
 		public void get() {

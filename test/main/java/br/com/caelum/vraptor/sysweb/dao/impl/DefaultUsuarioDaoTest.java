@@ -1,6 +1,7 @@
 package br.com.caelum.vraptor.sysweb.dao.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -10,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import br.com.caelum.vraptor.sysweb.annotations.GenericTest;
+import br.com.caelum.vraptor.sysweb.GenericTest;
 import br.com.caelum.vraptor.sysweb.model.Usuario;
 
 /**
@@ -27,7 +28,6 @@ public class DefaultUsuarioDaoTest extends GenericTest {
 	
 	@Before
 	public void setUp(){
-		super.setUp();
 	}
 
 	@Test
