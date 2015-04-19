@@ -61,12 +61,14 @@
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet-core</artifactId>
 			<version>${weld.version}</version>
+			<scope>provider</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.weld</groupId>
 			<artifactId>weld-core-impl</artifactId>
 			<version>${weld.version}</version>
+			<scope>provider</scope>
 		</dependency>
 
 		<dependency>
@@ -90,7 +92,7 @@
 		<dependency>
 			<groupId>br.com.caelum.vraptor</groupId>
 			<artifactId>vraptor-hibernate</artifactId>
-			<version>4.0.2</version>
+			<version>4.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -128,7 +130,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 
 
@@ -136,7 +137,6 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.9.5</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- BD -->
