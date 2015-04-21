@@ -1,38 +1,63 @@
 package br.com.caelum.vraptor.sysweb.model;
 
+import java.util.Set;
+
 /**
  * @author Fidelis
  *
  */
-public class Posologia {
-	private int intervaloHoras;
-	private double dose;
-	private int diasTratamento;
-	private String observacao;
+public class Posologia implements Comparable<Posologia>{
 	
-	public int getIntervaloHoras() {
-		return intervaloHoras;
+	private Integer ordem;
+	private String nome;
+	private Set<Medicamento> medicamentos;
+	
+	private String descricao;
+	private Set<Iteracao> iteracoes;
+	
+	public Integer getOrdem() {
+		return ordem;
 	}
-	public void setIntervaloHoras(int intervaloHoras) {
-		this.intervaloHoras = intervaloHoras;
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
 	}
-	public double getDose() {
-		return dose;
+	
+	public String getNome() {
+		return nome;
 	}
-	public void setDose(double dose) {
-		this.dose = dose;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public int getDiasTratamento() {
-		return diasTratamento;
+	public Set<Medicamento> getMedicamentos() {
+		return medicamentos;
 	}
-	public void setDiasTratamento(int diasTratamento) {
-		this.diasTratamento = diasTratamento;
+	public void setMedicamentos(Set<Medicamento> medicamentos) {
+		this.medicamentos = medicamentos;
 	}
-	public String getObservacao() {
-		return observacao;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public Set<Iteracao> getIteracoes() {
+		return iteracoes;
+	}
+	public void setIteracoes(Set<Iteracao> iteracoes) {
+		this.iteracoes = iteracoes;
+	}
+	@Override
+	public int compareTo(Posologia o) {
+		final int BEFORE = -1;
+	    final int EQUAL = 0;
+	    final int AFTER = 1;
+	    
+	    if(this.ordem == o.getOrdem()) return EQUAL;
+	    if(this.ordem < o.ordem) return BEFORE;
+	    if(this.ordem > o.ordem) return AFTER;
+	    
+	    return EQUAL;
 	}
 	
 }

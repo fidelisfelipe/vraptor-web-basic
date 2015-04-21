@@ -1,6 +1,6 @@
 package br.com.caelum.vraptor.sysweb.model;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Fidelis
@@ -8,7 +8,14 @@ import java.util.List;
  */
 public class Receituario {
 	
-	private List<Medicamento> medicamento;
-	
+	private Set<Tratamento> tratamentos;
+
+	public Set<Tratamento> getTratamentos() {
+		return tratamentos;
+	}
+
+	public void setTratamentos(Set<Tratamento> tratamentos) {
+		this.tratamentos = tratamentos;
+	}
 
 }
