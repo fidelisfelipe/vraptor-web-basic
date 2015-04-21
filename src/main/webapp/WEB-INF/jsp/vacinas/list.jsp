@@ -46,6 +46,8 @@
 	                        <th><fmt:message key="update" /></th>
 	                        <th><fmt:message key="description" /></th>
 	                        <th></th>
+	                        <th></th>
+	                        
 	                    </tr>
 	                </thead>
 	             
@@ -56,6 +58,7 @@
 	                        <th><fmt:message key="update" /></th>
 	                        <th><fmt:message key="description" /></th>
 	                        <th></th>
+	                        <th></th>
 	                        
 	                    </tr>
 	                </tfoot>
@@ -63,11 +66,12 @@
 	                <tbody>
 	                    <c:forEach items="${vacinaList}" var="vacina">
 		                    <tr>
+		                    	<td><a href="${path}/edit/${vacina.id}" class="btn btn-default"><i class="fa fa-pencil"></i><fmt:message key="edit" /></a></td>
 		                        <td>${vacina.nome}</td>
 		                        <td><fmt:formatDate value="${vacina.data}" type="date" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 		                        <td><fmt:formatDate value="${vacina.atualizacao}" type="date" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 		                        <td>${vacina.obs}</td>
-		                        <td><a href="#" class="btn btn-success"><i class="fa fa-remove"></i><fmt:message key="remove_anti_viral" /></a></td>
+		                        <td><a href="${path}/remove/${vacina.id}" class="btn btn-danger"><i class="fa fa-close"></i><fmt:message key="remove" /></a></td>
 		                    </tr>
 		                </c:forEach>
 	                </tbody>
