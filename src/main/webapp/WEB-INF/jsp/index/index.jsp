@@ -17,8 +17,6 @@
       <div class="profile-left">
         <img src="images/profileimg.jpg" alt="img" class="profile-img">
         <h1 class="name">Fidelis Felipe 
-        <a href="#" class="btn btn-success"><i class="fa fa-plus"></i><fmt:message key="add_drug" /></a>
-        <a href="#" class="btn btn-success"><i class="fa fa-plus"></i><fmt:message key="add_anti_viral" /></a>
         </h1>
         <p class="profile-text">There can be no thought of finishing...</p>
       </div>

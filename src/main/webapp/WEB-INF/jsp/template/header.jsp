@@ -24,12 +24,12 @@
 	<title><fmt:message key="title"/></title>
 
   <!-- ========== Css Files ========== -->
-  <link href="css/root.css" rel="stylesheet">
+  <link href="<c:url value="/css/root.css" />" rel="stylesheet">
 
   </head>
   <body>
   <!-- Start Page Loading -->
-  <div class="loading"><img src="img/loading.gif" alt="loading-img"></div>
+  <div class="loading"><img src="<c:url value="/img/loading.gif" />" alt="loading-img"></div>
   <!-- End Page Loading -->
  <!-- //////////////////////////////////////////////////////////////////////////// --> 
   <!-- START TOP -->
@@ -55,7 +55,8 @@
 
     <!-- Start Top Menu -->
     <ul class="topmenu">
-<!--       <li><a href="#">Files</a></li> -->
+      <li><a href="<c:url value="/vacinas/list" />">Vacinas</a></li>
+      <li><a href="<c:url value="/vacinas/add" />">Add Vacinas</a></li>
 <!--       <li><a href="#">Authors</a></li> -->
     </ul>
     <!-- End Top Menu -->
@@ -82,7 +83,7 @@
 <!--     </li> -->
     
     <li class="dropdown link">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="images/profileimg.jpg" alt="img"><b>Fidelis Felipe</b><span class="caret"></span></a>
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="<c:url value="/images/profileimg.jpg" />" alt="img"><b>Fidelis Felipe</b><span class="caret"></span></a>
         <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
           <li role="presentation" class="dropdown-header"><fmt:message key="profile" /></li>
           <li><a href="#"><i class="fa falist fa-inbox"></i><fmt:message key="inbox" /><span class="badge label-danger">4</span></a></li>

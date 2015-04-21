@@ -21,7 +21,7 @@
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 
-				<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">10</property>
@@ -35,6 +35,8 @@
 		<mapping class="br.com.caelum.vraptor.sysweb.model.Recurso" />
 		<mapping class="br.com.caelum.vraptor.sysweb.model.Perfil" />
 		<mapping class="br.com.caelum.vraptor.sysweb.model.Usuario" />
+		
+		<mapping class="br.com.caelum.vraptor.sysweb.model.Vacina" />
 
 	</session-factory>
 </hibernate-configuration>

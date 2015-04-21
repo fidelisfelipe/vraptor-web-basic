@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;

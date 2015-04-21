@@ -70,6 +70,14 @@
 			<version>${weld.version}</version>
 			<scope>provider</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.2.1.Final</version>
+			<scope>provider</scope>
+		</dependency>
+				
 
 		<dependency>
 			<groupId>javax.el</groupId>
