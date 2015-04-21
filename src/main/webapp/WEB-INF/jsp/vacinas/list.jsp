@@ -41,11 +41,11 @@
 	            <table id="vacinasTable" class="table display">
 	                <thead>
 	                    <tr>
+	                        <th></th>
 	                        <th><fmt:message key="name" /></th>
 	                        <th><fmt:message key="date" /></th>
 	                        <th><fmt:message key="update" /></th>
 	                        <th><fmt:message key="description" /></th>
-	                        <th></th>
 	                        <th></th>
 	                        
 	                    </tr>
@@ -53,11 +53,11 @@
 	             
 	                <tfoot>
 	                    <tr>
+	                        <th></th>
 	                        <th><fmt:message key="name" /></th>
 	                        <th><fmt:message key="date" /></th>
 	                        <th><fmt:message key="update" /></th>
 	                        <th><fmt:message key="description" /></th>
-	                        <th></th>
 	                        <th></th>
 	                        
 	                    </tr>

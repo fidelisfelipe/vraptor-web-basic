@@ -57,6 +57,8 @@
     <ul class="topmenu">
       <li><a href="<c:url value="/vacinas/list" />">Vacinas</a></li>
       <li><a href="<c:url value="/vacinas/add" />">Add Vacinas</a></li>
+      <li><a href="<c:url value="/medicamentos/list" />">Medicamento</a></li>
+      <li><a href="<c:url value="/medicamentos/add" />">Add Medicamento</a></li>
 <!--       <li><a href="#">Authors</a></li> -->
     </ul>
     <!-- End Top Menu -->
