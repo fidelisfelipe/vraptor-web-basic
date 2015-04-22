@@ -103,7 +103,7 @@ public class MedicamentoTest extends GenericTest {
 		
 		//posologia 2
 		Posologia posologia2 = new Posologia();
-		posologia2.setNome("Expectorante");
+		posologia2.setNome("Bronquilo dilatação");
 		tratamento.setPosologias(Collections.singleton(posologia2));
 		
 		Medicamento medicamento2 = new Medicamento();
@@ -133,7 +133,7 @@ public class MedicamentoTest extends GenericTest {
 		iteracao1.getMedicamentos().add(medicamento3);
 		iteracao1.getMedicamentos().add(medicamento4);
 		
-		posologia1.getIteracoes().add(iteracao1);
+		posologia2.getIteracoes().add(iteracao1);
 
 		//iteração medicamentosa 2
 		Iteracao iteracao2 = new Iteracao();
