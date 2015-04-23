@@ -12,6 +12,7 @@ public class Iteracao implements Comparable<Iteracao>{
 	private int intervaloHoras;
 	private int dias;
 	private Set<Medicamento> medicamentos;
+	private boolean isPrimeiraDoseEmJejum;
 	
 	public int getIntervaloHoras() {
 		return intervaloHoras;
@@ -49,6 +50,13 @@ public class Iteracao implements Comparable<Iteracao>{
 	    if(this.order > o.order) return AFTER;
 	    
 	    return EQUAL;
+	}
+	
+	public boolean isPrimeiraDoseEmJejum() {
+		return isPrimeiraDoseEmJejum;
+	}
+	public void setPrimeiraDoseEmJejum(boolean isPrimeiraDoseEmJejum) {
+		this.isPrimeiraDoseEmJejum = isPrimeiraDoseEmJejum;		
 	}
 
 }

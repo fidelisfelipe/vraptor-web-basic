@@ -60,8 +60,8 @@ public class MedicamentoTest extends GenericTest {
 		double totalMedida = getTotalMedidas(dose, horasMedicacao);
 		
 		//saida das informações
-		consoleInformacoes(primeiraDose, sdf, nome, intervaloHoras, dose,
-				medida, horasMedicacao, totalMedida);
+		//consoleInformacoes(primeiraDose, sdf, nome, intervaloHoras, dose,
+		//		medida, horasMedicacao, totalMedida);
 	}
 	
 	/**
@@ -72,79 +72,212 @@ public class MedicamentoTest extends GenericTest {
 	 */
 	@Test
 	public void testBronquiteAsmatica(){
+		//o usuario
 		Usuario usuario = new Usuario();
 		usuario.setNome("joao doente");
 		
+		//foi atendido
 		Atendimento atendimento = new Atendimento();
 		atendimento.setNomeLocal("hospital curare");
 		atendimento.setUsuario(usuario);
-
+		
+		//pelo medico
 		Medico medico = new Medico();
 		medico.setNome("Dr. house");
 		
+		//o atendimento foi feito pelo medico
 		atendimento.setMedicos(Collections.singleton(medico));
 		
+		//que receitou
 		Receituario receituario = new Receituario();
 		medico.setReceituarios(Collections.singleton(receituario));
 		
+		//o seguinte tratamento
 		Tratamento tratamento = new Tratamento();
+		tratamento.setOrder(1);
 		tratamento.setNome("Bronquite asmática");
 		
-		receituario.setTratamentos(Collections.singleton(tratamento));
+		//a receita possui um tratamento
+		receituario.setTratamentos(new TreeSet<Tratamento>());
+		receituario.getTratamentos().add(tratamento);
+
+		//o tratamento possui varias posologias
+		// a primeira indica que deve ser tratado o catarro no peito com expectorante
+		
 		//posologia 1
 		Posologia posologia1 = new Posologia();
+		posologia1.setOrdem(1);
 		posologia1.setNome("Expectorante");
-		tratamento.setPosologias(Collections.singleton(posologia1));
+
+		tratamento.setPosologias(new TreeSet<Posologia>());
+		tratamento.getPosologias().add(posologia1);
 		
+		//e para isso deve ser ministrado a seguinte medicação
 		Medicamento medicamento1 = new Medicamento();
-		medicamento1.setNome("Predimisolona");
+		medicamento1.setOrder(1);
 		
-		posologia1.setMedicamentos(Collections.singleton(medicamento1));
+		//o charope de predimisolona
+		//5 ml
+		medicamento1.setNome("Predimisolona");
+		medicamento1.setDose(5);
+		medicamento1.setMedida(MedidaEnum.ML);
+		
+		//uma vez por dia
+		//durante 5 dias
+		Iteracao iteracao1 = new Iteracao();
+		iteracao1.setOrder(1);
+		iteracao1.setDias(5);
+		iteracao1.setIntervaloHoras(24);
+		
+		iteracao1.setMedicamentos(new TreeSet<Medicamento>());
+		iteracao1.getMedicamentos().add(medicamento1);
+		posologia1.setIteracoes(new TreeSet<Iteracao>());
+		posologia1.getIteracoes().add(iteracao1);
 		
 		//posologia 2
 		Posologia posologia2 = new Posologia();
-		posologia2.setNome("Bronquilo dilatação");
-		tratamento.setPosologias(Collections.singleton(posologia2));
+		posologia2.setOrdem(2);
+		posologia2.setNome("Bronquio dilatação");
+		tratamento.getPosologias().add(posologia2);
 		
 		Medicamento medicamento2 = new Medicamento();
+		medicamento2.setOrder(1);
 		medicamento2.setNome("Berotec");
-		
-		posologia2.setMedicamentos(Collections.singleton(medicamento2));
+		medicamento2.setDose(5);
+		medicamento2.setMedida(MedidaEnum.GOTAS);
 		
 		Medicamento medicamento3 = new Medicamento();
+		medicamento3.setOrder(2);
 		medicamento3.setNome("Astrovent");
+		medicamento3.setDose(5);
+		medicamento3.setMedida(MedidaEnum.GOTAS);
 		
-		posologia2.setMedicamentos(Collections.singleton(medicamento3));
 		
 		Medicamento medicamento4 = new Medicamento();
+		medicamento4.setOrder(3);
 		medicamento4.setNome("Soro fisiologico");
-		
-		posologia2.setMedicamentos(Collections.singleton(medicamento4));
+		medicamento4.setDose(3);
+		medicamento4.setMedida(MedidaEnum.ML);
 		
 		//iteração medicamentosa 1
-		Iteracao iteracao1 = new Iteracao();
-		posologia2.setIteracoes(new TreeSet<Iteracao>());
-		
-		iteracao1.setOrder(1);
-		iteracao1.setIntervaloHoras(4);
-		iteracao1.setDias(2);
-		iteracao1.setMedicamentos(new TreeSet<Medicamento>());
-		iteracao1.getMedicamentos().add(medicamento2);
-		iteracao1.getMedicamentos().add(medicamento3);
-		iteracao1.getMedicamentos().add(medicamento4);
-		
-		posologia2.getIteracoes().add(iteracao1);
-
-		//iteração medicamentosa 2
 		Iteracao iteracao2 = new Iteracao();
-		iteracao2.setOrder(2);
-		iteracao2.setIntervaloHoras(8);
-		iteracao2.setDias(3);
+		
+		iteracao2.setOrder(1);
+		iteracao2.setIntervaloHoras(4);
+		iteracao2.setDias(2);
 		iteracao2.setMedicamentos(new TreeSet<Medicamento>());
 		iteracao2.getMedicamentos().add(medicamento2);
+		iteracao2.getMedicamentos().add(medicamento3);
 		iteracao2.getMedicamentos().add(medicamento4);
 		
+		posologia2.setIteracoes(new TreeSet<Iteracao>());
 		posologia2.getIteracoes().add(iteracao2);
+
+		//iteração medicamentosa 2
+		Iteracao iteracao3 = new Iteracao();
+		
+		iteracao3.setOrder(2);
+		iteracao3.setIntervaloHoras(6);
+		iteracao3.setDias(2);
+		iteracao3.setMedicamentos(new TreeSet<Medicamento>());
+		iteracao3.getMedicamentos().add(medicamento2);
+		iteracao3.getMedicamentos().add(medicamento4);
+		
+		posologia2.getIteracoes().add(iteracao3);
+		
+		//iteração medicamentosa 3
+		Iteracao iteracao4 = new Iteracao();
+		
+		iteracao4.setOrder(3);
+		iteracao4.setIntervaloHoras(8);
+		iteracao4.setDias(3);
+		iteracao4.setMedicamentos(new TreeSet<Medicamento>());
+		iteracao4.getMedicamentos().add(medicamento2);
+		iteracao4.getMedicamentos().add(medicamento4);
+		
+		posologia2.getIteracoes().add(iteracao4);
+		
+		//posologia 3
+		Posologia posologia3 = new Posologia();
+		posologia3.setOrdem(3);
+		posologia3.setNome("Fortalecimento da imunidade");
+		tratamento.getPosologias().add(posologia3);
+		
+		Medicamento medicamento5 = new Medicamento();
+		medicamento5.setOrder(5);
+		medicamento5.setNome("Vitamina C");
+		medicamento5.setDose(500);
+		medicamento5.setMedida(MedidaEnum.MG);
+
+		Medicamento medicamento6 = new Medicamento();
+		medicamento6.setOrder(6);
+		medicamento6.setNome("Rhodiola rosea");
+		medicamento6.setDose(1);
+		medicamento6.setMedida(MedidaEnum.CAPSULA);
+		
+		Iteracao iteracao5 = new Iteracao();
+		
+		iteracao5.setOrder(1);
+		iteracao5.setIntervaloHoras(8);
+		iteracao5.setDias(30);
+		iteracao5.setMedicamentos(new TreeSet<Medicamento>());
+		iteracao5.getMedicamentos().add(medicamento5);
+		iteracao5.setPrimeiraDoseEmJejum(Boolean.TRUE);
+		
+		Iteracao iteracao6 = new Iteracao();
+		
+		iteracao6.setOrder(1);
+		iteracao6.setIntervaloHoras(8);
+		iteracao6.setDias(30);
+		iteracao6.setMedicamentos(new TreeSet<Medicamento>());
+		iteracao6.getMedicamentos().add(medicamento6);
+		iteracao6.setPrimeiraDoseEmJejum(Boolean.TRUE);
+		
+		posologia3.setIteracoes(Collections.singleton(iteracao6));
+		
+		
+		
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(" O usuário "+atendimento.getUsuario().getNome());
+		sb.append("\n foi atendido na unidade "+atendimento.getNomeLocal());
+		
+		for (Medico m : atendimento.getMedicos()) {
+			sb.append("\n pelo medico "+m.getNome());
+			for (Receituario r : m.getReceituarios()) {
+				for (Tratamento t : r.getTratamentos()) {
+					sb.append("\n foi diagnosticado "+t.getNome());
+					for (Posologia p : t.getPosologias()) {
+						sb.append("\n");
+						sb.append("\n e para seu tratamento com foco "+p.getNome());
+						sb.append("\n as seguintes iterações medicamentosas:");
+						for (Iteracao i : p.getIteracoes()) {
+							sb.append("\n "+i.getOrder());
+							sb.append(" ministrar no intervalo de  "+i.getIntervaloHoras()+" horas ");
+							sb.append(" durante  "+i.getDias()+" dias ");
+							
+							if(i.isPrimeiraDoseEmJejum()){
+								sb.append("\n sendo a primeira dose do dia em jejum ");
+							}
+							
+							for (Medicamento medicamento : i.getMedicamentos()) {
+								sb.append("\n o medicamento "+medicamento.getNome());
+								sb.append(" sob a dosagem de : "+medicamento.getDose()+" "+medicamento.getMedida());
+							}
+						}
+						
+					}
+					
+				}
+			}
+		}
+		
+		System.out.println(sb.toString());
+		
+		
+		
+		
 		
 		
 	}

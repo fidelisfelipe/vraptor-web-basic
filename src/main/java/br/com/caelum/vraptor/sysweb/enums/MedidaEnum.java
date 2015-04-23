@@ -5,5 +5,5 @@ package br.com.caelum.vraptor.sysweb.enums;
  *
  */
 public enum MedidaEnum {
-	ML;
+	ML, GOTAS, MG, CAPSULA;
 }

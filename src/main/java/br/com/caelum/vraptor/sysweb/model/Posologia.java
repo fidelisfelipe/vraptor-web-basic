@@ -10,7 +10,6 @@ public class Posologia implements Comparable<Posologia>{
 	
 	private Integer ordem;
 	private String nome;
-	private Set<Medicamento> medicamentos;
 	
 	private String descricao;
 	private Set<Iteracao> iteracoes;
@@ -27,12 +26,6 @@ public class Posologia implements Comparable<Posologia>{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public Set<Medicamento> getMedicamentos() {
-		return medicamentos;
-	}
-	public void setMedicamentos(Set<Medicamento> medicamentos) {
-		this.medicamentos = medicamentos;
 	}
 	public String getDescricao() {
 		return descricao;
